@@ -42,5 +42,5 @@ here:
 .. toctree::
    :maxdepth: 1
 
-   region_selectors/region_selector_2d
-   region_selectors/region_selector_3d
+   01_region_selectors/region_selector_2d
+   01_region_selectors/region_selector_3d

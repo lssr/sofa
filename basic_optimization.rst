@@ -6,4 +6,4 @@ Examples:
 .. toctree::
    :maxdepth: 1
 
-   basic_optimization/2d_cantilever
+   03_basic_optimization/2d_cantilever
