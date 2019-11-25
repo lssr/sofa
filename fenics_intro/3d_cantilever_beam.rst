@@ -41,7 +41,7 @@ We will now label the fixed and load regions using ``region_selector_3d``. We wi
 
 ParaView lets us see our defined domains.
 
-.. image:: 3d_cantilever_beam_mesh_02.png
+.. image:: 3d_cantilever_beam_mesh_02.PNG
 
 We can see that the entire near face is marked 1, and the final milimeter of the top face is labeled 2, matching our description. The rest of the code is nearly identical to the 2D cantilever beam simulation. In this example we'll be showing how to adjust the load to more closely represent a single load, in this case :math:`-5 \text{N}` in the Z direction, rather than the load distribution that was used in the 2D example. We will define our desired load in :math:`\text{N}` and then convert it to :math:`\frac{\text{N}}{\text{mm}^2}` by dividing by the area of the load region. This only works when the mesh marked load region and the region selector class match exactly.
 
