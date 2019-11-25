@@ -42,7 +42,7 @@ When we write the boundaries information to a file using this code::
 
 We can open the generated .pvd file in ParaView to see our mesh.
 
-.. image:: 2d_cantilever_beam_mesh_01.png
+.. image:: 2d_cantilever_beam/2d_cantilever_beam_mesh_01.png
 
 We can see that most of the mesh has a 0 value set to it, with the left side set to a value of 1 and the right part of the top edge of the rectangle set to a value of 2. This matches the values that we assigned to the mesh above.
 
@@ -87,7 +87,7 @@ We can view our results by printing ``u`` to an xdmf file::
 
 If we open this xdmf file in ParaView, add a Warp By Vector filter, and set the coloring to be by displacement, this is the result we get:
 
-.. image:: 2d_cantilever_beam_results_01.png
+.. image:: 2d_cantilever_beam/2d_cantilever_beam_results_01.png
 
 -------------
 Complete Code
