@@ -228,7 +228,7 @@ Next we define the methods for defining the region from four points and from a c
 -------------
 Complete Code
 -------------
-The complete code follows and can also be downloaded :download:`here </../code/region_selector_3d.py>`.
+The complete code follows and can also be downloaded :download:`here </code/region_selector_3d.py>`.
 
-.. literalinclude:: /../code/region_selector_3d.py
+.. literalinclude:: /code/region_selector_3d.py
    :language: python

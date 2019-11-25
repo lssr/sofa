@@ -80,7 +80,7 @@ Example::
 	region3 = rs.GetRectangularRegion.from_points(Point(0.3,0.4), Point(0.1,0.8))
 	region4 = rs.GetRectangularRegion.from_points(Point(0.9,0.7), Point(0.4,0.3))
 
-.. image:: rs2d_02.png
+.. image:: rs2d_02.PNG
 
 ------------------
 Circular Region
@@ -116,7 +116,7 @@ Linear Boundary
 ------------------
 Complete Code
 ------------------
-The complete code follows and can also be downloaded :download:`here </../code/region_selector_2d.py>`.
+The complete code follows and can also be downloaded :download:`here </code/region_selector_2d.py>`.
 
-.. literalinclude:: /../code/region_selector_2d.py
+.. literalinclude:: /code/region_selector_2d.py
    :language: python

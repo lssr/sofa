@@ -10,9 +10,9 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   fenics_region_selector   
-   fenics_intro
-   basic_optimization
+   01_fenics_region_selector   
+   02_fenics_intro
+   03_basic_optimization
 
 
 Indices and tables

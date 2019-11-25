@@ -92,7 +92,7 @@ If we open this xdmf file in ParaView, add a Warp By Vector filter, and set the 
 -------------
 Complete Code
 -------------
-The complete code follows and can also be downloaded :download:`here </../code/2d_cantilever_beam.py>`.
+The complete code follows and can also be downloaded :download:`here </code/2d_cantilever_beam.py>`.
 
-.. literalinclude:: /../code/2d_cantilever_beam.py
+.. literalinclude:: /code/2d_cantilever_beam.py
    :language: python

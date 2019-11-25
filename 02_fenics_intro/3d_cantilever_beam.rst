@@ -78,7 +78,7 @@ We can see that the entire near face is marked 1, and the final milimeter of the
     xdmf_file = XDMFFile('%s/results.xdmf' % folder_name)
     xdmf_file.write(u,1.0)
 
-.. image:: 3d_cantilever_beam_results_02.png
+.. image:: 3d_cantilever_beam_results_02.PNG
 
 Our simulation indicates that under a :math:`5 \text{N}` downwards load, a cantilevered aluminum beam (E = :math:`68900 \frac{\text{N}}{\text{mm}^2}`, nu = :math:`0.33`) that is :math:`20\text{mm}` long, :math:`2\text{mm}` wide, and :math:`1\text{mm}` thick will deflect about :math:`0.53\text{mm}` downwards. Let's compare that to Autodesk Inventor's stress analysis simulation:
 
@@ -101,7 +101,7 @@ The new displacement, :math:`1.1\text{mm}`, matches the Euler-Bernoulli calculat
 -------------
 Complete Code
 -------------
-The complete code follows and can also be downloaded :download:`here </../code/3d_cantilever_beam.py>`.
+The complete code follows and can also be downloaded :download:`here </code/3d_cantilever_beam.py>`.
 
-.. literalinclude:: /../code/3d_cantilever_beam.py
+.. literalinclude:: /code/3d_cantilever_beam.py
    :language: python
