@@ -7,11 +7,10 @@ This file contains definitions for different 2D regions we may want to select. A
 	import region_selector_2d as rs
 	mesh = UnitSquareMesh(20,20)
 	
-	regions = MeshFunction('size_t', mesh, mesh.topology().dim()-1)
-	region.set_all(0)
-	
 	# Define regions here
 	
+	regions = MeshFunction('size_t', mesh, mesh.topology().dim()-1)
+	region.set_all(0)
 	region1.mark(regions, 1)
 	region2.mark(regions, 2)
 	region3.mark(regions, 3)
@@ -121,6 +120,50 @@ Example::
 Linear Boundary
 ------------------
 
+This class is used for selecting linear boundaries to regions. It only works with horizontal and vertical boundaries. These can either be defined with a pair of points on their ends or with one float representing the constant dimension, a pair of floats representing the range in the varying dimension, and a boolean representing whether the boundary is vertical or horizontal.
+
+class GetLinearBoundary(SubDomain):
+    def __init__(self, coord:float, range1:float, range2:float, horizontal:bool):
+        super().__init__()
+        self.coord = coord
+        self.range1 = np.minimum(range1,range2)
+        self.range2 = np.maximum(range1,range2)
+        self.ishorizontal = horizontal
+
+    @classmethod
+    def from_points(cls, p1:Point, p2:Point) -> 'GetLinearBoundary':
+        x1 = p1.x()
+        y1 = p1.y()
+        x2 = p2.x()
+        y2 = p2.y()
+
+        # If x doesn't change, line is vertical
+        if near(x1, x2):
+            return cls(x1, y1, y2, False)
+        # If y doesn't change, line is horizontal
+        elif near(y1, y2):
+            return cls(y1, x1, x2, True)
+        else:
+            raise ValueError("Linear boundaries must be horizontal or vertical")
+
+    @classmethod
+    def from_floats(cls, coord:float, range1:float, range2:float, horizontal:bool) -> 'GetLinearBoundary':
+        return cls(coord, range1, range2, horizontal)
+
+    def inside(self,x,on_boundary):
+        if self.ishorizontal:
+            return near(x[1], self.coord) and between(x[0], (self.range1, self.range2)) and on_boundary
+        else:
+            return near(x[0], self.coord) and between(x[1], (self.range1, self.range2)) and on_boundary
+
+Example::
+
+	region1 = rs.GetLinearBoundary.from_floats(1.0,.2,.4, True)
+	region2 = rs.GetLinearBoundary.from_floats(1.0,.2,.9, False)
+	region3 = rs.GetLinearBoundary.from_points(Point(0.0,0.0), Point(0.0,0.8))
+	region4 = rs.GetLinearBoundary.from_points(Point(0.3,0.0), Point(0.9,0.0))
+
+.. image:: rs2d_04.PNG
 ------------------
 Complete Code
 ------------------
