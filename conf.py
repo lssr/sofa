@@ -17,13 +17,13 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Opt'
+project = 'SOFA'
 copyright = '2019, Luis, Rafi'
 author = 'Luis, Rafi'
 
 # The full version, including alpha/beta/rc tags
 release = '2019'
-
+master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 
