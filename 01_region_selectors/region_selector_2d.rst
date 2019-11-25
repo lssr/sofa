@@ -109,6 +109,14 @@ instantiate the class, one which takes three floats and one which takes a point 
         def inside(self, x, on_boundary):
             return (x[0] - self.cx)**2.0 + (x[1] - self.cy)**2.0 <= r**2.0
 
+Example::
+
+	region1 = rs.GetCircularRegion.from_floats(.5,.5,.4)
+	region2 = rs.GetCircularRegion.from_floats(.2,.1,.4)
+	region3 = rs.GetCircularRegion.from_points(Point(0.7,1), .2)
+	region4 = rs.GetCircularRegion.from_points(Point(.5,.5), .25)
+
+.. image:: rs2d_03.PNG
 ------------------
 Linear Boundary
 ------------------
