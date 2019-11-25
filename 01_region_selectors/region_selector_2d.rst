@@ -3,22 +3,22 @@
 
 This file contains definitions for different 2D regions we may want to select. All examples in this file will only have the region selecting section of the code which will be surrounded by this code::
 
-	from fenics import *
-	import region_selector_2d as rs
-	mesh = UnitSquareMesh(20,20)
-	
-	# Define regions here
-	
-	regions = MeshFunction('size_t', mesh, mesh.topology().dim()-1)
-	region.set_all(0)
-	region1.mark(regions, 1)
-	region2.mark(regions, 2)
-	region3.mark(regions, 3)
-	region4.mark(regions, 4)
-	
-	folder_name = './region_selector_examples'
-	boundaryfile = File('%s/region.pvd' % folder_name)
-	boundaryfile << regions
+    from fenics import *
+    import region_selector_2d as rs
+    mesh = UnitSquareMesh(20,20)
+    
+    # Define regions here
+    
+    regions = MeshFunction('size_t', mesh, mesh.topology().dim()-1)
+    region.set_all(0)
+    region1.mark(regions, 1)
+    region2.mark(regions, 2)
+    region3.mark(regions, 3)
+    region4.mark(regions, 4)
+    
+    folder_name = './region_selector_examples'
+    boundaryfile = File('%s/region.pvd' % folder_name)
+    boundaryfile << regions
 
 Opening the generated .pvd file in ParaView will give a preview of the mesh selections. A custom color scheme is used in this section to distinguish the colors.
 
@@ -74,10 +74,10 @@ The ``inside()`` method for this class simply returns whether a given :math:`\ve
 
 Example::
 
-	region1 = rs.GetRectangularRegion.from_floats(.7,.8,.9.95)
-	region2 = rs.GetRectangularRegion.from_floats(0.0,1.0,.5,.5)
-	region3 = rs.GetRectangularRegion.from_points(Point(0.3,0.4), Point(0.1,0.8))
-	region4 = rs.GetRectangularRegion.from_points(Point(0.9,0.7), Point(0.4,0.3))
+    region1 = rs.GetRectangularRegion.from_floats(.7,.8,.9.95)
+    region2 = rs.GetRectangularRegion.from_floats(0.0,1.0,.5,.5)
+    region3 = rs.GetRectangularRegion.from_points(Point(0.3,0.4), Point(0.1,0.8))
+    region4 = rs.GetRectangularRegion.from_points(Point(0.9,0.7), Point(0.4,0.3))
 
 .. image:: rs2d_02.PNG
 
@@ -110,10 +110,10 @@ instantiate the class, one which takes three floats and one which takes a point 
 
 Example::
 
-	region1 = rs.GetCircularRegion.from_floats(.5,.5,.4)
-	region2 = rs.GetCircularRegion.from_floats(.2,.1,.4)
-	region3 = rs.GetCircularRegion.from_points(Point(0.7,1), .2)
-	region4 = rs.GetCircularRegion.from_points(Point(.5,.5), .25)
+    region1 = rs.GetCircularRegion.from_floats(.5,.5,.4)
+    region2 = rs.GetCircularRegion.from_floats(.2,.1,.4)
+    region3 = rs.GetCircularRegion.from_points(Point(0.7,1), .2)
+    region4 = rs.GetCircularRegion.from_points(Point(.5,.5), .25)
 
 .. image:: rs2d_03.PNG
 ------------------
@@ -122,46 +122,48 @@ Linear Boundary
 
 This class is used for selecting linear boundaries to regions. It only works with horizontal and vertical boundaries. These can either be defined with a pair of points on their ends or with one float representing the constant dimension, a pair of floats representing the range in the varying dimension, and a boolean representing whether the boundary is vertical or horizontal.
 
-class GetLinearBoundary(SubDomain):
-    def __init__(self, coord:float, range1:float, range2:float, horizontal:bool):
-        super().__init__()
-        self.coord = coord
-        self.range1 = np.minimum(range1,range2)
-        self.range2 = np.maximum(range1,range2)
-        self.ishorizontal = horizontal
+::
 
-    @classmethod
-    def from_points(cls, p1:Point, p2:Point) -> 'GetLinearBoundary':
-        x1 = p1.x()
-        y1 = p1.y()
-        x2 = p2.x()
-        y2 = p2.y()
+    class GetLinearBoundary(SubDomain):
+        def __init__(self, coord:float, range1:float, range2:float, horizontal:bool):
+            super().__init__()
+            self.coord = coord
+            self.range1 = np.minimum(range1,range2)
+            self.range2 = np.maximum(range1,range2)
+            self.ishorizontal = horizontal
 
-        # If x doesn't change, line is vertical
-        if near(x1, x2):
-            return cls(x1, y1, y2, False)
-        # If y doesn't change, line is horizontal
-        elif near(y1, y2):
-            return cls(y1, x1, x2, True)
-        else:
-            raise ValueError("Linear boundaries must be horizontal or vertical")
+        @classmethod
+        def from_points(cls, p1:Point, p2:Point) -> 'GetLinearBoundary':
+            x1 = p1.x()
+            y1 = p1.y()
+            x2 = p2.x()
+            y2 = p2.y()
 
-    @classmethod
-    def from_floats(cls, coord:float, range1:float, range2:float, horizontal:bool) -> 'GetLinearBoundary':
-        return cls(coord, range1, range2, horizontal)
+            # If x doesn't change, line is vertical
+            if near(x1, x2):
+                return cls(x1, y1, y2, False)
+            # If y doesn't change, line is horizontal
+            elif near(y1, y2):
+                return cls(y1, x1, x2, True)
+            else:
+                raise ValueError("Linear boundaries must be horizontal or vertical")
 
-    def inside(self,x,on_boundary):
-        if self.ishorizontal:
-            return near(x[1], self.coord) and between(x[0], (self.range1, self.range2)) and on_boundary
-        else:
-            return near(x[0], self.coord) and between(x[1], (self.range1, self.range2)) and on_boundary
+        @classmethod
+        def from_floats(cls, coord:float, range1:float, range2:float, horizontal:bool) -> 'GetLinearBoundary':
+            return cls(coord, range1, range2, horizontal)
+
+        def inside(self,x,on_boundary):
+            if self.ishorizontal:
+                return near(x[1], self.coord) and between(x[0], (self.range1, self.range2)) and on_boundary
+            else:
+                return near(x[0], self.coord) and between(x[1], (self.range1, self.range2)) and on_boundary
 
 Example::
 
-	region1 = rs.GetLinearBoundary.from_floats(1.0,.2,.4, True)
-	region2 = rs.GetLinearBoundary.from_floats(1.0,.2,.9, False)
-	region3 = rs.GetLinearBoundary.from_points(Point(0.0,0.0), Point(0.0,0.8))
-	region4 = rs.GetLinearBoundary.from_points(Point(0.3,0.0), Point(0.9,0.0))
+    region1 = rs.GetLinearBoundary.from_floats(1.0,.2,.4, True)
+    region2 = rs.GetLinearBoundary.from_floats(1.0,.2,.9, False)
+    region3 = rs.GetLinearBoundary.from_points(Point(0.0,0.0), Point(0.0,0.8))
+    region4 = rs.GetLinearBoundary.from_points(Point(0.3,0.0), Point(0.9,0.0))
 
 .. image:: rs2d_04.PNG
 ------------------
