@@ -84,15 +84,17 @@ Our simulation indicates that under a :math:`5 \text{N}` downwards load, a canti
 
 .. image:: 3d_cantilever_beam/3d_cantilever_beam_results_overlay_03.PNG
 
-The rainbow colored one is from Inventor. So why do the results disagree so much? It seems like the Inventor simulation has the beam displace about twice as much. The reason is that the Fenics model's approximation is too broad. If we want to find more exact results, we change the line::
+The rainbow colored one is from Inventor. So why do the results disagree so much? It seems like the Inventor simulation has the beam displace about twice as much. The reason is that specified a linear shape function to interpolate the solution between the mesh nodes.
+::
 
     V = VectorFunctionSpace(mesh, "Lagrange", 1)
 
-to::
+If we want a better approximation, we increase the number nodes per element by specifying the order of the interpolating polinomial function. If we change the shape function from a linear to a quadratic approximation, we write
+::
 
     V = VectorFunctionSpace(mesh, "Lagrange", 2)
 
-This makes the simulation take longer to run, but the results now match near exactly.
+This makes the simulation more computationally expensive, since we have more nodes, but provide better results.
 
 .. image:: 3d_cantilever_beam/3d_cantilever_beam_results_overlay_04.PNG
 

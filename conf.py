@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'SOFA'
-copyright = '2019, Luis, Rafi'
-author = 'Luis, Rafi'
+project = 'Sofa'
+copyright = '2019, Luis Santos & Rafi Pedersen'
+author = 'Luis Santos & Rafi Pedersen'
 
 # The full version, including alpha/beta/rc tags
 release = '2019'
@@ -48,6 +48,14 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = 'alabaster'
+
+html_theme_options = {
+    'description': 'Structural Optimization with FEniCS and dolfin-adjoint',
+    'fixed_sidebar': True,
+    'font_family': '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'
+}
+
+pygments_style = 'lovelace'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
