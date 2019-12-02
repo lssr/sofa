@@ -78,7 +78,7 @@ We now define the three edges from ``p1`` to ``p2``, ``p3``, ``p4`` as the vecto
 ---------------------------
 Cylindrical Region Selector
 ---------------------------
-This class selects a cylindrical region as defined by two points representing the centers of the circles at the end of the cylinder and a float representing the radius of the circle. A point :math:`\vec{x}` is inside the region if and only if the projection of the vector from one point on the cylinder to :math:`\vec{x}` onto the central axis of the cylinder :math:`\vec{a}` is between :math:`0` and :math:`|\vec{a}|` and its distance from :math:`\vec{a}` is between :math:`0` and the radius.
+This class selects a cylindrical region as defined by two points representing the centers of the circles at the end of the cylinder and a float representing the radius of the circle. A point :math:`\vec{x}` is inside the region if and only if the projection of the vector from one centerpoint of one of the cylinder's caps to :math:`\vec{x}` onto the central axis of the cylinder :math:`\vec{a}` is between :math:`0` and :math:`|\vec{a}|` and its distance from :math:`\vec{a}` is between :math:`0` and the radius.
 
 ::
 
