@@ -1,7 +1,7 @@
 Imported Mesh
 =============
 
-In this example we will import a mesh from a CAD file and use FEniCS to model its displacement. This file was created in Autodesk Inventor and exported as an .igs file, which can be downloaded :download:`here <../mesh_1/mesh_1.igs>`. To convert it to a a Gmsh .msh file, run this line in the command line::
+In this example we will import a mesh from a CAD file and use FEniCS to model its displacement. This file was created in Autodesk Inventor and exported as an .igs file, which can be downloaded :download:`here <mesh_1/mesh_1.igs>`. To convert it to a a Gmsh .msh file, run this line in the command line::
 
 	gmsh -3 -clmax 1 -o mesh.msh mesh_1.igs
 
@@ -71,10 +71,10 @@ We now define the load and material properties and set up the simulation as in t
 	scaledLoad = appliedLoad / loadArea
 	
 	def eps(u):
-		return sym(grad(u))
+        return sym(grad(u))
 	
 	def sigma(u):
-		return lmbda*tr(eps(u)) * Identity(mesh.topology().dim()) + 2.0*mu*eps(u)
+        return lmbda*tr(eps(u)) * Identity(mesh.topology().dim()) + 2.0*mu*eps(u)
 	
 	V = VectorFunctionSpace(mesh, "Lagrange", 2)
 	du = TrialFunction(V)
