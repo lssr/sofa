@@ -1,7 +1,7 @@
 Imported Mesh
 =============
 
-In this example we will import a mesh from a CAD file and use Fenics to model its displacement. This file was created in Autodesk Inventor and exported as an .igs file, which can be downloaded :download:`here <../mesh_1/mesh_1.igs>`. To convert it to a a Gmsh .msh file, run this line in the command line::
+In this example we will import a mesh from a CAD file and use FEniCS to model its displacement. This file was created in Autodesk Inventor and exported as an .igs file, which can be downloaded :download:`here <../mesh_1/mesh_1.igs>`. To convert it to a a Gmsh .msh file, run this line in the command line::
 
 	gmsh -3 -clmax 1 -o mesh.msh mesh_1.igs
 
@@ -9,7 +9,7 @@ The ``-3`` flag creates a 3D mesh and the ``-clmax 1`` flag sets the max size of
 
 	dolfin-convert mesh.msh mesh.xml
 
-We can now import the mesh into a Fenics script and write it out to a .pvd file with no marked regions to preview the mesh geometry::
+We can now import the mesh into a FEniCS script and write it out to a .pvd file with no marked regions to preview the mesh geometry::
 
 	from dolfin import *
 	
@@ -57,7 +57,7 @@ We can now view the marked faces in ParaView:
 
 .. image:: mesh_1/marked_mesh.png
 
-We now define the load and material properties and set up the simulation as in the previous examples. Note that in this case we cannot use the ``area()`` method of the planar boundary class because it was not defined using a set of four corners that perfectly fit the mesh, so the returned area of the region won't match the actual selected area. Instead, we use the ``assemble()`` function which returns the integral of what's passed to it. In this case, the area is :math:`\int_\Beta 1*ds` where :math:`\Beta` is the load region, which can be represented as ``assemble(Constant(1.0)*ds(2))`.
+We now define the load and material properties and set up the simulation as in the previous examples. Note that in this case we cannot use the ``area()`` method of the planar boundary class because it was not defined using a set of four corners that perfectly fit the mesh, so the returned area of the region won't match the actual selected area. Instead, we use the ``assemble()`` function which returns the integral of what's passed to it. In this case, the area is :math:`\int_\Omega 1*ds` where :math:`\Omega` is the load region. The area of the load region can be found with ``assemble(Constant(1.0)*ds(2))`.
 
 ::
 
