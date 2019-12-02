@@ -3,7 +3,7 @@
 
 This file contains definitions for different 2D regions we may want to select. All examples in this file will only have the region selecting section of the code which will be surrounded by this code::
 
-    from fenics import *
+    from dolfin import *
     import region_selector_2d as rs
     mesh = UnitSquareMesh(20,20)
     

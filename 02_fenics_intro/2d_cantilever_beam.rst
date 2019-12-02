@@ -52,7 +52,7 @@ We can now write our model for the deformation of the beam. There's some math be
 
    \text{Find } \boldsymbol{u} \in V \text{ s.t. } \int \langle \boldsymbol{\sigma}(\boldsymbol{u}), \boldsymbol{\varepsilon}(\boldsymbol{v}) \rangle = \int \boldsymbol{f}\cdot \boldsymbol{v} \quad\forall \boldsymbol{v} \in V
    
-Which satisfies the boundary conditions, in this case that the displacement in the fixed region is 0. We implement this in Fenics fairly simply after defining some material properties::
+Which satisfies the boundary conditions, in this case that the displacement in the fixed region is 0. We implement this in FEniCS fairly simply after defining some material properties::
 
     E = 70000.0
     nu = 0.3

@@ -1,7 +1,7 @@
-Fenics Region Selector Modules
+FEniCS Region Selector Modules
 ==============================
 
-Fenics has several methods for defining regions for boundary condition control
+FEniCS has several methods for defining regions for boundary condition control
 and we use a method where we define a class for each domain. These classes have
 a method which takes a point and returns true or false based on whether the point
 qualifies for the domain. Domains can either be a region or a boundary. For
