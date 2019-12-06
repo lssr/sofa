@@ -19,12 +19,12 @@ Where :math:`\boldsymbol{F}` represents the applied forces at the subsurfaces :m
 In summary, we want to vary :math:`\boldsymbol{\rho} \in [0,1]` to minimize :math:`\text{J}(\boldsymbol{\rho})` while keeping :math:`\int_V \rho \text{dV} < 0.3\int_V 1 \text{dV}`, where V is the domain space. Further, :math:`\forall (x,y | x \in [21, 25] \cap y \in [9, 10]) \rightarrow \boldsymbol{\rho}(x,y) = 1`. In order to avoid the checkerboard problem we will add a filter term to :math:`\text{J}` to penalize too many changes in :math:`\boldsymbol{\rho}` with a weight, in this case
 
 .. math::
-   `\text{J}_\text{filter} = 0.5\langle \nabla\boldsymbol{\rho},\nabla\boldsymbol{\rho} \rangle
+   \text{J}_\text{filter} = 0.5\langle \nabla\boldsymbol{\rho},\nabla\boldsymbol{\rho} \rangle
 
 ---------------
 Implementation
 ---------------
-We start by first defining a standard Dolfin model to find the displacements in a 2D profile when a load is applied, much like the 2D Cantilever example, but this time this displacement will be as a function of a scalar function :math:`\boldsymbol{\rho}`. We start by defining the material properties, loads, mesh, and regions::
+We start by first defining a standard Dolfin model to find the displacements in a 2D profile when a load is applied, much like the 2D Cantilever example, but this time this displacement will be as a function of a scalar function :math:`\boldsymbol{\rho}`. We will use a load of :math:`500\text{N}`, though the specific value of the load should not matter too much on the final result of the optimization as long as it isn't far too small or far too great. We start by defining the material properties, loads, mesh, and regions::
 
     from __future__ import print_function
     import numpy as np
