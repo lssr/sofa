@@ -21,7 +21,7 @@ Where :math:`P` is the applied bending load and :math:`L` is the length of the b
 .. math::
    \sigma_{max} = \frac{\frac{PL}{8}\frac{T}{2}}{I} = \frac{PLT}{16I}
 
-Where T is the thickness of the beam in the direction of loading. If we set :math:`\sigma_{max} = :math:`\sigma_y`, the yield stress of the beam material, we can solve for the maximum bending load as:
+Where T is the thickness of the beam in the direction of loading. If we set :math:`\sigma_{max} = \sigma_y`, the yield stress of the beam material, we can solve for the maximum bending load as:
 
 .. math::
    P_\tau = \frac{16\sigma_y I}{LT}
@@ -35,3 +35,5 @@ When the bending load is applied in the y direction, we get :math:`J = P_\tau + 
 
 .. math::
    J = \frac{16\sigma_y}{LT}I_x + \frac{4\pi^2E}{L^2}\text{min}(I_x, I_y)
+
+Let's create the optimization for this problem with a beam with a 3 inch by 3 inch cross section and 48 inches in length out of A36 structural steel alloy (:math:`E=29\mathrm{e}{6}\text{psi}`, :math:`\nu=0.26`, :math:`\sigma_y=14\mathrm{e}{3}\text{psi}`) with a maximum volume fraction of 25%.
