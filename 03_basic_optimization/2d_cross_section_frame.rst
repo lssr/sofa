@@ -36,4 +36,4 @@ When the bending load is applied in the y direction, we get :math:`J = P_\tau + 
 .. math::
    J = \frac{16\sigma_y}{LT}I_x + \frac{4\pi^2E}{L^2}\text{min}(I_x, I_y)
 
-Let's create the optimization for this problem with a beam with a 3 inch by 3 inch cross section and 48 inches in length out of A36 structural steel alloy (:math:`E=29\mathrm{e}{6}\text{psi}`, :math:`\nu=0.26`, :math:`\sigma_y=14\mathrm{e}{3}\text{psi}`) with a maximum volume fraction of 25%.
+Let's create the optimization for this problem with a beam with a 3 inch by 3 inch cross section and 48 inches in length out of A36 structural steel alloy (:math:`E=29\cdot 10^6\text{psi}`, :math:`\nu=0.26`, :math:`\sigma_y=14\cdot 10^3\text{psi}`) with a maximum volume fraction of 25%.
