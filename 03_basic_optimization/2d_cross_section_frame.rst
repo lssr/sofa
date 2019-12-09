@@ -29,7 +29,7 @@ Where T is the thickness of the beam in the direction of loading. If we set :mat
 Euler-Bernoulli beam theory also tells us that the max buckling load of a beam is:
 
 .. math::
-   \P_N = \frac{4\pi^2EI}{L^2}
+   P_N = \frac{4\pi^2EI}{L^2}
 
 When the bending load is applied in the y direction, we get :math:`J = P_\tau + P_N` as:
 
