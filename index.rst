@@ -18,7 +18,7 @@ Sofa, *Structural Optimization with FEniCS and dolfin-adjoint*, is a compilation
 About the authors
 ~~~~~~~~~~~~~~~~~
 
-Luis Santos is a PhD Candidate in the `Department of Mechanical Engineering <https://enme.umd.edu/>`_ at the University of Maryland ,College Park. 
+Luis Santos is a PhD Candidate in the `Department of Mechanical Engineering <https://enme.umd.edu/>`_ at the University of Maryland, College Park. 
 
 Raphael Pedersen is an undergraduate student also in the Department of Mechanical Engineering at `University of Maryland\, College Park <https://umd.edu/>`_ .
 
@@ -32,6 +32,7 @@ Contents
    fenics_region_selector   
    fenics_intro
    basic_optimization
+   rating_optimization
 
 
 Indices and tables

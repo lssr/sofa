@@ -33,7 +33,7 @@ V = VectorFunctionSpace(mesh, "Lagrange", 1)
 # Function space for rho
 V0 = FunctionSpace(mesh, "Lagrange", 1)
 
-# Load applied on the last 1mm on the top of the beam
+# Load applied on the last 4cm on the top of the beam
 loadRegion = rs.GetLinearBoundary.from_points(Point(length-40.0, thickness), Point(length, thickness))
 
 # The end of the beam at x = 0 is fixed
@@ -49,7 +49,7 @@ boundaryfile = File('%s/simpleBoundaries.pvd' % folder_name)
 boundaryfile << boundaries
 
 domains = MeshFunction('size_t', mesh, mesh.topology().dim())
-# The region within 1mm of the applied load is protected, rho forced to be 1
+# The region within 1cm of the applied load is protected, rho forced to be 1
 frozenLoadRegion = rs.GetRectangularRegion.from_points(Point(length, thickness), Point(length - 40.0, thickness - 10.0))
 
 domains.set_all(0)

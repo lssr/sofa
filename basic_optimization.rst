@@ -7,4 +7,3 @@ Examples:
    :maxdepth: 1
 
    03_basic_optimization/2d_cantilever
-   03_basic_optimization/2d_cross_section_frame
