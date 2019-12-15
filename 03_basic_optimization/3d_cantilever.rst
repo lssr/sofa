@@ -18,7 +18,7 @@ And that's all! Our governing equations to solve for the displacement of the pie
 .. image:: 3d_cantilever/generated_shape.png
 
 Note how even though this is a pretty simple optimization, the program still takes much longer to run in 3D than in 2D (the 3D version took about half an hour on my computer). The solution is a hollow part, and if we imagine the left half and right half of solving the same problem separately, it appears that they converged to two different solutions of the same problem. When we watch the progress of the simulation, it seems that because the right side connected from the top to the bottom in a straight diagonal line before the support beam from the bottom had the chance to connect, that support beam was extraneous and moved to the left side to complete a 3-point support. While increasing the allowed volume fraction may help, the solved solution will not be a solution to our problem which requires a volume fraction of 30%.
-In a broader sense, the issue we are observing is premature convergence to a local minimum. We will go in to more detail on methods of avoiding premature convergence, but for now we will "fix" this problem using a symmetry constraint which will make the left and right side match. There are a few methods of implementing a symmetry constraint, but the simplest method is to halve the domain along Z and create a Dirichlet boundary condition along the mirror plane that prevents motion in the Z direction.
+In a broader sense, the issue we are observing is premature convergence to a local minimum. We will go in to more detail on methods of avoiding premature convergence, but for now we will fix this problem using a symmetry constraint which will make the left and right side match, since we know that the ideal geometry should be symmetric along Z as the problem definitions and bounds are symmetric as well. This limits our solution space to only symmetric solutions, and as we know the global minimum value for the objective function lies in the symmetric solution space we avoid many local minima without removing the global minimum. There are a few methods of implementing a symmetry constraint, but the simplest method is to halve the domain along Z and create a Dirichlet boundary condition along the mirror plane that prevents motion in the Z direction.
 
 Make the following changes:
 
@@ -26,6 +26,8 @@ Make the following changes:
 
     width = 25.0/2.0 # [mm]
     ...
+	resZ = int(resolution * 2.0 * width) # Num nodes in z axis
+	...
     load = Constant((0.0, -500.0/2.0, 0.0)) # [N]
     ...
     midplane = rs.GetPlanarBoundary(\
@@ -39,4 +41,14 @@ Make the following changes:
     ...
     u = forward_linear(rho, [bc1, bc2])
 
-This creates a problem whose optimal solution should be able to be mirrored across the Z=0 plane to get an optimal solution to our original problem. Since the domain space is smaller now, we can also afford to increase the resolution in the Z direction to avoid problems with granularity that may arise from shrinking the domain space.
+This creates a problem whose optimal solution should be able to be mirrored across the Z=0 plane to get an optimal solution to our original problem. Since the domain space is smaller now, we can also afford to increase the resolution in the Z direction to avoid problems with granularity that may arise from shrinking the domain space. After applying the threshold filter to 0.5 and a reflect filter along Z min, the generated geometry is:
+
+.. image:: 3d_cantilever/symmetric_shape.png
+
+-------------
+Complete Code
+-------------
+The complete code follows and can also be downloaded :download:`here </code/3d_cantilever_opt.py>`.
+
+.. literalinclude:: /code/3d_cantilever_opt.py
+   :language: python
