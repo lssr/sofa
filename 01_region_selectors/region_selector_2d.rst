@@ -22,7 +22,7 @@ This file contains definitions for different 2D regions we may want to select. A
 
 Opening the generated .pvd file in ParaView will give a preview of the mesh selections. A custom color scheme is used in this section to distinguish the colors.
 
-------------------
+
 Rectangular Region
 ------------------
 This class selects a rectangular region whose sides are parallel to the :math:`x` and 
@@ -81,7 +81,6 @@ Example::
 
 .. image:: rs2d_02.PNG
 
-------------------
 Circular Region
 ------------------
 
@@ -116,6 +115,7 @@ Example::
     region4 = rs.GetCircularRegion.from_points(Point(.5,.5), .25)
 
 .. image:: rs2d_03.PNG
+
 ------------------
 Linear Boundary
 ------------------

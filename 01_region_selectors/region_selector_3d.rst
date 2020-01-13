@@ -28,7 +28,7 @@ False. If none of them don't match, then the vectors are equal so we return True
                 return False
         return True
 
-----------------------
+
 Cuboid Region Selector
 ----------------------
 This class selects rectangular cuboid region in any orientation. The cuboids are defined 
@@ -75,7 +75,7 @@ We now define the three edges from ``p1`` to ``p2``, ``p3``, ``p4`` as the vecto
             
             return between(ux, (0, um)) and between(vx, (0, vm)) and between(wx, (0, wm))
 
----------------------------
+
 Cylindrical Region Selector
 ---------------------------
 This class selects a cylindrical region as defined by two points representing the centers of the circles at the end of the cylinder and a float representing the radius of the circle. A point :math:`\vec{x}` is inside the region if and only if the projection of the vector from one centerpoint of one of the cylinder's caps to :math:`\vec{x}` onto the central axis of the cylinder :math:`\vec{a}` is between :math:`0` and :math:`|\vec{a}|` and its distance from :math:`\vec{a}` is between :math:`0` and the radius.
@@ -105,7 +105,7 @@ This class selects a cylindrical region as defined by two points representing th
             
             return between(dsq, (0.0, self.r**2.0)) and between(xva, (0.0, am))
 
-------------------------
+
 Planar Boundary Selector
 ------------------------
 This class selects a boundary in the shape of a parallelogram. It can be defined in two ways. One way is to select a coordinate value, say :math:`x=5`, and it selects the points that lay in that plane. The other way is to define a parallelogram region using its four corners as points and the class selects the points which lie in-plane to the parallelogram and are within its boundaries. This class can be used to select a fixed end (e.g. by selecting the plane :math:`x=0`) or to select a loading region which is only a subsection of a face, for example the last 2mm of the top face of a rectangular beam.
@@ -225,7 +225,7 @@ Next we define the methods for defining the region from four points and from a c
         def area(self):
             return mag_cross(self.p2.array()-self.p1.array(), self.p4.array()-self.p1.array())
 
--------------
+
 Complete Code
 -------------
 The complete code follows and can also be downloaded :download:`here </code/region_selector_3d.py>`.

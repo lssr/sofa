@@ -52,15 +52,20 @@ html_theme = 'alabaster'
 html_theme_options = {
     'description': 'Structural Optimization with FEniCS and dolfin-adjoint',
     'fixed_sidebar': True,
-    'font_family': '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'
+    'font_family': '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
+    'code_font_size': '0.85em',
+    # 'caption_font_size': 0.5,
+    # 'font_size': '05'
+    # 'pre_bg': '#444444'
+    'page_width': '60%'
 }
 
-pygments_style = 'lovelace'
+pygments_style = 'pastie'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 from pygments.lexers import PythonLexer
 l = PythonLexer()

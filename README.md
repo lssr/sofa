@@ -1,2 +1,2 @@
 # sofa
-Structural Optimization in FEniCS and dolfin-Adjoint 
+Structural Optimization with FEniCS and dolfin-Adjoint 
