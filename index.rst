@@ -32,7 +32,6 @@ Contents
    fenics_region_selector   
    fenics_intro
    basic_optimization
-   rating_optimization
 
 
 Indices and tables

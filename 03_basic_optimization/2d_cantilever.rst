@@ -60,7 +60,7 @@ We start by first defining a standard Dolfin model to find the displacements in 
     boundaryfile = File('%s/simpleBoundaries.pvd' % folder_name)
     boundaryfile << boundaries
 
-We will now define a region for the "frozen" region where the load is applied and :math:`\boldsymbol{\rho} = 0`::
+We will now define a region for the "frozen" region where the load is applied and :math:`\boldsymbol{\rho} = 1`::
 
     domains = MeshFunction('size_t', mesh, mesh.topology.dim())
     frozenLoadRegion = rs.GetRectangularRegion.from_points(Point(length, thickness), Point(length - 40.0, thickness - 10.0))
