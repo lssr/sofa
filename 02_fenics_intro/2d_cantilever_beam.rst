@@ -65,7 +65,7 @@ Which satisfies the boundary conditions, in this case that the displacement in t
         return sym(grad(u))
     
     def sigma(u):
-        return lmbda*tr(eps(u)) * Identity(mesh.topology.dim()) + 2.0*mu*eps
+        return lmbda*tr(eps(u)) * Identity(mesh.topology().dim()) + 2.0*mu*eps(u)
     
     V = VectorFunctionSpace(mesh, "Lagrange", 1)
     du = TrialFunction(V)
